@@ -1,0 +1,71 @@
+name: Test/Build
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'zulu'
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - uses: ./.github/actions/cache-konan
+
+      # Claude Code and Codex read the same AGENTS.md and skills (see AGENTS.md).
+      - name: Check agent config
+        run: python3 tools/agent-hooks/agent_config_check.py
+
+      # The task lists live in the root build.gradle.kts, shared with the pre-push hook and the
+      # release: formatting, the public APIs (a change is deliberate, see updateKotlinAbi), the
+      # JVM, Android host and Linux native tests, and the common code compiled as metadata.
+      - name: Check (gradle)
+        run: ./gradlew checkLinux
+
+      # The common tests on Kotlin/JS (which emulates 64-bit Long) and on Kotlin/Wasm, each in
+      # Node.js and in headless Chrome.
+      - name: Check JavaScript and Wasm
+        run: ./gradlew checkWeb
+
+      - name: Build (gradle)
+        run: ./gradlew assemble
+
+  # Apple test binaries link and run only on macOS.
+  test-apple:
+    needs: build
+    runs-on: macos-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'zulu'
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - uses: ./.github/actions/cache-konan
+
+      # iosArm64 has no simulator to run on; compiling its tests catches device-only drift.
+      - name: Check iOS and macOS
+        run: ./gradlew checkApple

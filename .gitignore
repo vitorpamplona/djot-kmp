@@ -1,0 +1,22 @@
+*.iml
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+.kotlin
+.gradle
+**/build/
+!src/**/build/
+local.properties
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+
+kotlin-js-store
+
+# Xcode
+xcuserdata/
+*.xcworkspace/
+DerivedData/
