@@ -31,6 +31,16 @@ with it, but it knows nothing about Nostr.
   check, publishing. The module's own build file holds only what is its own.
 - `tools/agent-hooks/` — the checks Claude Code and Codex run before a push.
 
+**One module, on purpose (decided 2026-11-25).** The parser and the HTML renderer ship together
+in `djot`, as djot.js ships them. Splitting would buy nothing today: both need only the stdlib, so
+no consumer's classpath gets lighter; R8, the Kotlin/Native linker and the JS and Wasm compilers
+drop `renderHTML` from an app that never calls it; and the conformance suite is written in HTML,
+so the parser's tests need the renderer anyway. It would cost a second artifact, ABI dump and
+release flow. Split when a renderer brings a dependency (a `djot-compose` goes in its own module on
+top of `djot`, which stays stdlib-only), or when more of djot.js's renderers are ported (its Djot
+writer, its Pandoc conversion): then `djot` keeps the parser and the tree, and each renderer,
+`djot-html` included, becomes its own artifact.
+
 ## Rules
 
 - **Behave like djot.js.** The conformance suite compares output byte for byte, on every
