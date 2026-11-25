@@ -1,0 +1,474 @@
+public final class com/vitorpamplona/djot/AstKt {
+	public static final fun getChildNodes (Lcom/vitorpamplona/djot/AstNode;)Ljava/util/List;
+}
+
+public abstract class com/vitorpamplona/djot/AstNode {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAttributes ()Ljava/util/LinkedHashMap;
+	public final fun getAutoAttributes ()Ljava/util/LinkedHashMap;
+	public final fun getPos ()Lcom/vitorpamplona/djot/Pos;
+	public final fun getTag ()Ljava/lang/String;
+	public final fun setAttributes (Ljava/util/LinkedHashMap;)V
+	public final fun setAutoAttributes (Ljava/util/LinkedHashMap;)V
+	public final fun setPos (Lcom/vitorpamplona/djot/Pos;)V
+}
+
+public abstract class com/vitorpamplona/djot/Block : com/vitorpamplona/djot/AstNode {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class com/vitorpamplona/djot/BlockParserKt {
+	public static final fun parseEvents (Ljava/lang/String;Lcom/vitorpamplona/djot/ParseOptions;)Ljava/lang/Iterable;
+	public static synthetic fun parseEvents$default (Ljava/lang/String;Lcom/vitorpamplona/djot/ParseOptions;ILjava/lang/Object;)Ljava/lang/Iterable;
+}
+
+public final class com/vitorpamplona/djot/BlockQuote : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/BulletList : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (Ljava/lang/String;ZLjava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;ZLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getStyle ()Ljava/lang/String;
+	public final fun getTight ()Z
+	public final fun setStyle (Ljava/lang/String;)V
+	public final fun setTight (Z)V
+}
+
+public final class com/vitorpamplona/djot/Caption : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren, com/vitorpamplona/djot/TableChild {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Cell : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (ZLjava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (ZLjava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAlign ()Ljava/lang/String;
+	public fun getChildren ()Ljava/util/List;
+	public final fun getHead ()Z
+	public final fun setAlign (Ljava/lang/String;)V
+	public final fun setHead (Z)V
+}
+
+public final class com/vitorpamplona/djot/CodeBlock : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasText {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getLang ()Ljava/lang/String;
+	public fun getText ()Ljava/lang/String;
+	public final fun setLang (Ljava/lang/String;)V
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Definition : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/DefinitionListItemChild, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/DefinitionList : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/DefinitionListItem : com/vitorpamplona/djot/AstNode {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getChildren ()Ljava/util/List;
+}
+
+public abstract interface class com/vitorpamplona/djot/DefinitionListItemChild {
+}
+
+public final class com/vitorpamplona/djot/Delete : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/DisplayMath : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Div : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Doc : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Ljava/util/LinkedHashMap;Ljava/util/LinkedHashMap;Ljava/util/LinkedHashMap;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/LinkedHashMap;Ljava/util/LinkedHashMap;Ljava/util/LinkedHashMap;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAutoReferences ()Ljava/util/LinkedHashMap;
+	public fun getChildren ()Ljava/util/List;
+	public final fun getFootnotes ()Ljava/util/LinkedHashMap;
+	public final fun getReferences ()Ljava/util/LinkedHashMap;
+}
+
+public final class com/vitorpamplona/djot/DoubleQuoted : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Email : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Emph : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Event {
+	public fun <init> (IILjava/lang/String;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (IILjava/lang/String;)Lcom/vitorpamplona/djot/Event;
+	public static synthetic fun copy$default (Lcom/vitorpamplona/djot/Event;IILjava/lang/String;ILjava/lang/Object;)Lcom/vitorpamplona/djot/Event;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAnnot ()Ljava/lang/String;
+	public final fun getEndpos ()I
+	public final fun getStartpos ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/vitorpamplona/djot/Footnote : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun setLabel (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/FootnoteReference : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/HardBreak : com/vitorpamplona/djot/Inline {
+	public fun <init> ()V
+}
+
+public abstract interface class com/vitorpamplona/djot/HasChildren {
+	public abstract fun getChildren ()Ljava/util/List;
+}
+
+public abstract interface class com/vitorpamplona/djot/HasText {
+	public abstract fun getText ()Ljava/lang/String;
+}
+
+public final class com/vitorpamplona/djot/Heading : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (ILjava/util/List;)V
+	public synthetic fun <init> (ILjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getLevel ()I
+	public final fun setLevel (I)V
+}
+
+public final class com/vitorpamplona/djot/Image : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getDestination ()Ljava/lang/String;
+	public final fun getReference ()Ljava/lang/String;
+	public final fun setDestination (Ljava/lang/String;)V
+	public final fun setReference (Ljava/lang/String;)V
+}
+
+public abstract class com/vitorpamplona/djot/Inline : com/vitorpamplona/djot/AstNode {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class com/vitorpamplona/djot/InlineMath : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Insert : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Link : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getDestination ()Ljava/lang/String;
+	public final fun getReference ()Ljava/lang/String;
+	public final fun setDestination (Ljava/lang/String;)V
+	public final fun setReference (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/ListItem : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Mark : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/NonBreakingSpace : com/vitorpamplona/djot/Inline {
+	public fun <init> ()V
+}
+
+public final class com/vitorpamplona/djot/OrderedList : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (Ljava/lang/String;ZLjava/lang/Long;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;ZLjava/lang/Long;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getStart ()Ljava/lang/Long;
+	public final fun getStyle ()Ljava/lang/String;
+	public final fun getTight ()Z
+	public final fun setStart (Ljava/lang/Long;)V
+	public final fun setStyle (Ljava/lang/String;)V
+	public final fun setTight (Z)V
+}
+
+public final class com/vitorpamplona/djot/Para : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/ParseKt {
+	public static final fun getStringContent (Lcom/vitorpamplona/djot/AstNode;)Ljava/lang/String;
+	public static final fun parse (Ljava/lang/String;Lcom/vitorpamplona/djot/ParseOptions;)Lcom/vitorpamplona/djot/Doc;
+	public static synthetic fun parse$default (Ljava/lang/String;Lcom/vitorpamplona/djot/ParseOptions;ILjava/lang/Object;)Lcom/vitorpamplona/djot/Doc;
+	public static final fun parseFromEvents (Ljava/lang/Iterable;Ljava/lang/String;Lcom/vitorpamplona/djot/ParseOptions;)Lcom/vitorpamplona/djot/Doc;
+	public static synthetic fun parseFromEvents$default (Ljava/lang/Iterable;Ljava/lang/String;Lcom/vitorpamplona/djot/ParseOptions;ILjava/lang/Object;)Lcom/vitorpamplona/djot/Doc;
+	public static final fun renderAST (Lcom/vitorpamplona/djot/Doc;)Ljava/lang/String;
+}
+
+public final class com/vitorpamplona/djot/ParseOptions {
+	public fun <init> ()V
+	public fun <init> (ZLcom/vitorpamplona/djot/WarningHandler;)V
+	public synthetic fun <init> (ZLcom/vitorpamplona/djot/WarningHandler;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getSourcePositions ()Z
+	public final fun getWarn ()Lcom/vitorpamplona/djot/WarningHandler;
+}
+
+public final class com/vitorpamplona/djot/Pos {
+	public fun <init> (Lcom/vitorpamplona/djot/SourceLoc;Lcom/vitorpamplona/djot/SourceLoc;)V
+	public final fun component1 ()Lcom/vitorpamplona/djot/SourceLoc;
+	public final fun component2 ()Lcom/vitorpamplona/djot/SourceLoc;
+	public final fun copy (Lcom/vitorpamplona/djot/SourceLoc;Lcom/vitorpamplona/djot/SourceLoc;)Lcom/vitorpamplona/djot/Pos;
+	public static synthetic fun copy$default (Lcom/vitorpamplona/djot/Pos;Lcom/vitorpamplona/djot/SourceLoc;Lcom/vitorpamplona/djot/SourceLoc;ILjava/lang/Object;)Lcom/vitorpamplona/djot/Pos;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnd ()Lcom/vitorpamplona/djot/SourceLoc;
+	public final fun getStart ()Lcom/vitorpamplona/djot/SourceLoc;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/vitorpamplona/djot/RawBlock : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getFormat ()Ljava/lang/String;
+	public fun getText ()Ljava/lang/String;
+	public final fun setFormat (Ljava/lang/String;)V
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/RawInline : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun getFormat ()Ljava/lang/String;
+	public fun getText ()Ljava/lang/String;
+	public final fun setFormat (Ljava/lang/String;)V
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Reference : com/vitorpamplona/djot/AstNode {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun getDestination ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun setDestination (Ljava/lang/String;)V
+	public final fun setLabel (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Row : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren, com/vitorpamplona/djot/TableChild {
+	public fun <init> (ZLjava/util/List;)V
+	public synthetic fun <init> (ZLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getHead ()Z
+	public final fun setHead (Z)V
+}
+
+public final class com/vitorpamplona/djot/Section : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/SingleQuoted : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/SmartPunctuation : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+	public final fun setType (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/SoftBreak : com/vitorpamplona/djot/Inline {
+	public fun <init> ()V
+}
+
+public final class com/vitorpamplona/djot/SourceLoc {
+	public fun <init> (III)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun copy (III)Lcom/vitorpamplona/djot/SourceLoc;
+	public static synthetic fun copy$default (Lcom/vitorpamplona/djot/SourceLoc;IIIILjava/lang/Object;)Lcom/vitorpamplona/djot/SourceLoc;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCol ()I
+	public final fun getLine ()I
+	public final fun getOffset ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/vitorpamplona/djot/Span : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Str : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Strong : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Subscript : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Superscript : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/Symb : com/vitorpamplona/djot/Inline {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getAlias ()Ljava/lang/String;
+	public final fun setAlias (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Table : com/vitorpamplona/djot/Block {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getChildren ()Ljava/util/List;
+}
+
+public abstract interface class com/vitorpamplona/djot/TableChild {
+}
+
+public final class com/vitorpamplona/djot/TaskList : com/vitorpamplona/djot/Block, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (ZLjava/util/List;)V
+	public synthetic fun <init> (ZLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+	public final fun getTight ()Z
+	public final fun setTight (Z)V
+}
+
+public final class com/vitorpamplona/djot/TaskListItem : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/HasChildren {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getCheckbox ()Ljava/lang/String;
+	public fun getChildren ()Ljava/util/List;
+	public final fun setCheckbox (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Term : com/vitorpamplona/djot/AstNode, com/vitorpamplona/djot/DefinitionListItemChild, com/vitorpamplona/djot/HasChildren {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getChildren ()Ljava/util/List;
+}
+
+public final class com/vitorpamplona/djot/ThematicBreak : com/vitorpamplona/djot/Block {
+	public fun <init> ()V
+}
+
+public final class com/vitorpamplona/djot/Url : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Verbatim : com/vitorpamplona/djot/Inline, com/vitorpamplona/djot/HasText {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setText (Ljava/lang/String;)V
+}
+
+public final class com/vitorpamplona/djot/Warning {
+	public fun <init> (Ljava/lang/String;Lcom/vitorpamplona/djot/SourceLoc;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Integer;Lcom/vitorpamplona/djot/SourceLoc;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Integer;Lcom/vitorpamplona/djot/SourceLoc;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getOffset ()Ljava/lang/Integer;
+	public final fun getSourceLoc ()Lcom/vitorpamplona/djot/SourceLoc;
+	public final fun render ()Ljava/lang/String;
+}
+
+public abstract interface class com/vitorpamplona/djot/WarningHandler {
+	public abstract fun warn (Lcom/vitorpamplona/djot/Warning;)V
+}
+

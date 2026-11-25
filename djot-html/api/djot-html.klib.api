@@ -1,0 +1,59 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, js, linuxX64, macosArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <djot-kmp:djot-html>
+final class com.vitorpamplona.djot.html/HtmlOptions { // com.vitorpamplona.djot.html/HtmlOptions|null[0]
+    constructor <init>(com.vitorpamplona.djot/WarningHandler? = ..., kotlin.collections/Map<kotlin/String, kotlin/Function2<com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot.html/HTMLRenderer, kotlin/String>>? = ...) // com.vitorpamplona.djot.html/HtmlOptions.<init>|<init>(com.vitorpamplona.djot.WarningHandler?;kotlin.collections.Map<kotlin.String,kotlin.Function2<com.vitorpamplona.djot.AstNode,com.vitorpamplona.djot.html.HTMLRenderer,kotlin.String>>?){}[0]
+
+    final val overrides // com.vitorpamplona.djot.html/HtmlOptions.overrides|{}overrides[0]
+        final fun <get-overrides>(): kotlin.collections/Map<kotlin/String, kotlin/Function2<com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot.html/HTMLRenderer, kotlin/String>>? // com.vitorpamplona.djot.html/HtmlOptions.overrides.<get-overrides>|<get-overrides>(){}[0]
+    final val warn // com.vitorpamplona.djot.html/HtmlOptions.warn|{}warn[0]
+        final fun <get-warn>(): com.vitorpamplona.djot/WarningHandler? // com.vitorpamplona.djot.html/HtmlOptions.warn.<get-warn>|<get-warn>(){}[0]
+}
+
+open class com.vitorpamplona.djot.html/HTMLRenderer { // com.vitorpamplona.djot.html/HTMLRenderer|null[0]
+    constructor <init>(com.vitorpamplona.djot.html/HtmlOptions = ...) // com.vitorpamplona.djot.html/HTMLRenderer.<init>|<init>(com.vitorpamplona.djot.html.HtmlOptions){}[0]
+
+    final val options // com.vitorpamplona.djot.html/HTMLRenderer.options|{}options[0]
+        final fun <get-options>(): com.vitorpamplona.djot.html/HtmlOptions // com.vitorpamplona.djot.html/HTMLRenderer.options.<get-options>|<get-options>(){}[0]
+    open val smartPunctuationMap // com.vitorpamplona.djot.html/HTMLRenderer.smartPunctuationMap|{}smartPunctuationMap[0]
+        open fun <get-smartPunctuationMap>(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // com.vitorpamplona.djot.html/HTMLRenderer.smartPunctuationMap.<get-smartPunctuationMap>|<get-smartPunctuationMap>(){}[0]
+
+    final var autoReferences // com.vitorpamplona.djot.html/HTMLRenderer.autoReferences|{}autoReferences[0]
+        final fun <get-autoReferences>(): kotlin.collections/Map<kotlin/String, com.vitorpamplona.djot/Reference> // com.vitorpamplona.djot.html/HTMLRenderer.autoReferences.<get-autoReferences>|<get-autoReferences>(){}[0]
+        final fun <set-autoReferences>(kotlin.collections/Map<kotlin/String, com.vitorpamplona.djot/Reference>) // com.vitorpamplona.djot.html/HTMLRenderer.autoReferences.<set-autoReferences>|<set-autoReferences>(kotlin.collections.Map<kotlin.String,com.vitorpamplona.djot.Reference>){}[0]
+    final var fnrefIdEmitted // com.vitorpamplona.djot.html/HTMLRenderer.fnrefIdEmitted|{}fnrefIdEmitted[0]
+        final fun <get-fnrefIdEmitted>(): kotlin.collections/MutableMap<kotlin/String, kotlin/Boolean> // com.vitorpamplona.djot.html/HTMLRenderer.fnrefIdEmitted.<get-fnrefIdEmitted>|<get-fnrefIdEmitted>(){}[0]
+        final fun <set-fnrefIdEmitted>(kotlin.collections/MutableMap<kotlin/String, kotlin/Boolean>) // com.vitorpamplona.djot.html/HTMLRenderer.fnrefIdEmitted.<set-fnrefIdEmitted>|<set-fnrefIdEmitted>(kotlin.collections.MutableMap<kotlin.String,kotlin.Boolean>){}[0]
+    final var footnoteIndex // com.vitorpamplona.djot.html/HTMLRenderer.footnoteIndex|{}footnoteIndex[0]
+        final fun <get-footnoteIndex>(): kotlin.collections/MutableMap<kotlin/String, kotlin/Int> // com.vitorpamplona.djot.html/HTMLRenderer.footnoteIndex.<get-footnoteIndex>|<get-footnoteIndex>(){}[0]
+        final fun <set-footnoteIndex>(kotlin.collections/MutableMap<kotlin/String, kotlin/Int>) // com.vitorpamplona.djot.html/HTMLRenderer.footnoteIndex.<set-footnoteIndex>|<set-footnoteIndex>(kotlin.collections.MutableMap<kotlin.String,kotlin.Int>){}[0]
+    final var nextFootnoteIndex // com.vitorpamplona.djot.html/HTMLRenderer.nextFootnoteIndex|{}nextFootnoteIndex[0]
+        final fun <get-nextFootnoteIndex>(): kotlin/Int // com.vitorpamplona.djot.html/HTMLRenderer.nextFootnoteIndex.<get-nextFootnoteIndex>|<get-nextFootnoteIndex>(){}[0]
+        final fun <set-nextFootnoteIndex>(kotlin/Int) // com.vitorpamplona.djot.html/HTMLRenderer.nextFootnoteIndex.<set-nextFootnoteIndex>|<set-nextFootnoteIndex>(kotlin.Int){}[0]
+    final var references // com.vitorpamplona.djot.html/HTMLRenderer.references|{}references[0]
+        final fun <get-references>(): kotlin.collections/Map<kotlin/String, com.vitorpamplona.djot/Reference> // com.vitorpamplona.djot.html/HTMLRenderer.references.<get-references>|<get-references>(){}[0]
+        final fun <set-references>(kotlin.collections/Map<kotlin/String, com.vitorpamplona.djot/Reference>) // com.vitorpamplona.djot.html/HTMLRenderer.references.<set-references>|<set-references>(kotlin.collections.Map<kotlin.String,com.vitorpamplona.djot.Reference>){}[0]
+    final var warn // com.vitorpamplona.djot.html/HTMLRenderer.warn|{}warn[0]
+        final fun <get-warn>(): com.vitorpamplona.djot/WarningHandler // com.vitorpamplona.djot.html/HTMLRenderer.warn.<get-warn>|<get-warn>(){}[0]
+        final fun <set-warn>(com.vitorpamplona.djot/WarningHandler) // com.vitorpamplona.djot.html/HTMLRenderer.warn.<set-warn>|<set-warn>(com.vitorpamplona.djot.WarningHandler){}[0]
+
+    open fun addBacklink(kotlin/String, kotlin/Int): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.addBacklink|addBacklink(kotlin.String;kotlin.Int){}[0]
+    open fun escape(kotlin/String): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.escape|escape(kotlin.String){}[0]
+    open fun escapeAttribute(kotlin/String): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.escapeAttribute|escapeAttribute(kotlin.String){}[0]
+    open fun inTags(kotlin/String, com.vitorpamplona.djot/AstNode, kotlin/Int, kotlin.collections/Map<kotlin/String, kotlin/String>? = ...): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.inTags|inTags(kotlin.String;com.vitorpamplona.djot.AstNode;kotlin.Int;kotlin.collections.Map<kotlin.String,kotlin.String>?){}[0]
+    open fun render(com.vitorpamplona.djot/Doc): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.render|render(com.vitorpamplona.djot.Doc){}[0]
+    open fun renderAstNode(com.vitorpamplona.djot/AstNode): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderAstNode|renderAstNode(com.vitorpamplona.djot.AstNode){}[0]
+    open fun renderAstNodeDefault(com.vitorpamplona.djot/AstNode): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderAstNodeDefault|renderAstNodeDefault(com.vitorpamplona.djot.AstNode){}[0]
+    open fun renderAttributes(com.vitorpamplona.djot/AstNode, kotlin.collections/Map<kotlin/String, kotlin/String>? = ...): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderAttributes|renderAttributes(com.vitorpamplona.djot.AstNode;kotlin.collections.Map<kotlin.String,kotlin.String>?){}[0]
+    open fun renderChildren(com.vitorpamplona.djot/AstNode): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderChildren|renderChildren(com.vitorpamplona.djot.AstNode){}[0]
+    open fun renderCloseTag(kotlin/String): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderCloseTag|renderCloseTag(kotlin.String){}[0]
+    open fun renderNotes(kotlin.collections/Map<kotlin/String, com.vitorpamplona.djot/Footnote>): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderNotes|renderNotes(kotlin.collections.Map<kotlin.String,com.vitorpamplona.djot.Footnote>){}[0]
+    open fun renderTag(kotlin/String, com.vitorpamplona.djot/AstNode, kotlin.collections/Map<kotlin/String, kotlin/String>? = ...): kotlin/String // com.vitorpamplona.djot.html/HTMLRenderer.renderTag|renderTag(kotlin.String;com.vitorpamplona.djot.AstNode;kotlin.collections.Map<kotlin.String,kotlin.String>?){}[0]
+}
+
+final fun com.vitorpamplona.djot.html/renderHTML(com.vitorpamplona.djot/Doc, com.vitorpamplona.djot.html/HtmlOptions = ...): kotlin/String // com.vitorpamplona.djot.html/renderHTML|renderHTML(com.vitorpamplona.djot.Doc;com.vitorpamplona.djot.html.HtmlOptions){}[0]

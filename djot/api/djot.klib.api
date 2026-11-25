@@ -1,0 +1,588 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, js, linuxX64, macosArm64, wasmJs]
+// Alias: native => [iosArm64, iosSimulatorArm64, linuxX64, macosArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <djot-kmp:djot>
+abstract fun interface com.vitorpamplona.djot/WarningHandler { // com.vitorpamplona.djot/WarningHandler|null[0]
+    abstract fun warn(com.vitorpamplona.djot/Warning) // com.vitorpamplona.djot/WarningHandler.warn|warn(com.vitorpamplona.djot.Warning){}[0]
+}
+
+abstract interface <#A: com.vitorpamplona.djot/AstNode> com.vitorpamplona.djot/HasChildren { // com.vitorpamplona.djot/HasChildren|null[0]
+    abstract val children // com.vitorpamplona.djot/HasChildren.children|{}children[0]
+        abstract fun <get-children>(): kotlin.collections/MutableList<#A> // com.vitorpamplona.djot/HasChildren.children.<get-children>|<get-children>(){}[0]
+}
+
+abstract interface com.vitorpamplona.djot/HasText { // com.vitorpamplona.djot/HasText|null[0]
+    abstract val text // com.vitorpamplona.djot/HasText.text|{}text[0]
+        abstract fun <get-text>(): kotlin/String // com.vitorpamplona.djot/HasText.text.<get-text>|<get-text>(){}[0]
+}
+
+sealed interface com.vitorpamplona.djot/DefinitionListItemChild // com.vitorpamplona.djot/DefinitionListItemChild|null[0]
+
+sealed interface com.vitorpamplona.djot/TableChild // com.vitorpamplona.djot/TableChild|null[0]
+
+final class com.vitorpamplona.djot/BlockQuote : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/BlockQuote|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/BlockQuote.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/BlockQuote.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/BlockQuote.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/BulletList : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/ListItem> { // com.vitorpamplona.djot/BulletList|null[0]
+    constructor <init>(kotlin/String, kotlin/Boolean, kotlin.collections/MutableList<com.vitorpamplona.djot/ListItem> = ...) // com.vitorpamplona.djot/BulletList.<init>|<init>(kotlin.String;kotlin.Boolean;kotlin.collections.MutableList<com.vitorpamplona.djot.ListItem>){}[0]
+
+    final val children // com.vitorpamplona.djot/BulletList.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/ListItem> // com.vitorpamplona.djot/BulletList.children.<get-children>|<get-children>(){}[0]
+
+    final var style // com.vitorpamplona.djot/BulletList.style|{}style[0]
+        final fun <get-style>(): kotlin/String // com.vitorpamplona.djot/BulletList.style.<get-style>|<get-style>(){}[0]
+        final fun <set-style>(kotlin/String) // com.vitorpamplona.djot/BulletList.style.<set-style>|<set-style>(kotlin.String){}[0]
+    final var tight // com.vitorpamplona.djot/BulletList.tight|{}tight[0]
+        final fun <get-tight>(): kotlin/Boolean // com.vitorpamplona.djot/BulletList.tight.<get-tight>|<get-tight>(){}[0]
+        final fun <set-tight>(kotlin/Boolean) // com.vitorpamplona.djot/BulletList.tight.<set-tight>|<set-tight>(kotlin.Boolean){}[0]
+}
+
+final class com.vitorpamplona.djot/Caption : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/TableChild { // com.vitorpamplona.djot/Caption|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Caption.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Caption.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Caption.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Cell : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline> { // com.vitorpamplona.djot/Cell|null[0]
+    constructor <init>(kotlin/Boolean, kotlin/String, kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Cell.<init>|<init>(kotlin.Boolean;kotlin.String;kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Cell.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Cell.children.<get-children>|<get-children>(){}[0]
+
+    final var align // com.vitorpamplona.djot/Cell.align|{}align[0]
+        final fun <get-align>(): kotlin/String // com.vitorpamplona.djot/Cell.align.<get-align>|<get-align>(){}[0]
+        final fun <set-align>(kotlin/String) // com.vitorpamplona.djot/Cell.align.<set-align>|<set-align>(kotlin.String){}[0]
+    final var head // com.vitorpamplona.djot/Cell.head|{}head[0]
+        final fun <get-head>(): kotlin/Boolean // com.vitorpamplona.djot/Cell.head.<get-head>|<get-head>(){}[0]
+        final fun <set-head>(kotlin/Boolean) // com.vitorpamplona.djot/Cell.head.<set-head>|<set-head>(kotlin.Boolean){}[0]
+}
+
+final class com.vitorpamplona.djot/CodeBlock : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasText { // com.vitorpamplona.djot/CodeBlock|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String = ...) // com.vitorpamplona.djot/CodeBlock.<init>|<init>(kotlin.String?;kotlin.String){}[0]
+
+    final var lang // com.vitorpamplona.djot/CodeBlock.lang|{}lang[0]
+        final fun <get-lang>(): kotlin/String? // com.vitorpamplona.djot/CodeBlock.lang.<get-lang>|<get-lang>(){}[0]
+        final fun <set-lang>(kotlin/String?) // com.vitorpamplona.djot/CodeBlock.lang.<set-lang>|<set-lang>(kotlin.String?){}[0]
+    final var text // com.vitorpamplona.djot/CodeBlock.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/CodeBlock.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/CodeBlock.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Definition : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/DefinitionListItemChild, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/Definition|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/Definition.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/Definition.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/Definition.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/DefinitionList : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/DefinitionListItem> { // com.vitorpamplona.djot/DefinitionList|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/DefinitionListItem> = ...) // com.vitorpamplona.djot/DefinitionList.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.DefinitionListItem>){}[0]
+
+    final val children // com.vitorpamplona.djot/DefinitionList.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/DefinitionListItem> // com.vitorpamplona.djot/DefinitionList.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/DefinitionListItem : com.vitorpamplona.djot/AstNode { // com.vitorpamplona.djot/DefinitionListItem|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/DefinitionListItemChild> = ...) // com.vitorpamplona.djot/DefinitionListItem.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.DefinitionListItemChild>){}[0]
+
+    final val children // com.vitorpamplona.djot/DefinitionListItem.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/DefinitionListItemChild> // com.vitorpamplona.djot/DefinitionListItem.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Delete : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Delete|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Delete.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Delete.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Delete.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/DisplayMath : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/DisplayMath|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/DisplayMath.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/DisplayMath.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/DisplayMath.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/DisplayMath.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Div : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/Div|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/Div.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/Div.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/Div.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Doc : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/Doc|null[0]
+    final val autoReferences // com.vitorpamplona.djot/Doc.autoReferences|{}autoReferences[0]
+        // Targets: [native, wasmJs]
+        final fun <get-autoReferences>(): kotlin.collections/HashMap<kotlin/String, com.vitorpamplona.djot/Reference> // com.vitorpamplona.djot/Doc.autoReferences.<get-autoReferences>|<get-autoReferences>(){}[0]
+
+        // Targets: [js]
+        final fun <get-autoReferences>(): kotlin.collections/LinkedHashMap<kotlin/String, com.vitorpamplona.djot/Reference> // com.vitorpamplona.djot/Doc.autoReferences.<get-autoReferences>|<get-autoReferences>(){}[0]
+    final val children // com.vitorpamplona.djot/Doc.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/Doc.children.<get-children>|<get-children>(){}[0]
+    final val footnotes // com.vitorpamplona.djot/Doc.footnotes|{}footnotes[0]
+        // Targets: [native, wasmJs]
+        final fun <get-footnotes>(): kotlin.collections/HashMap<kotlin/String, com.vitorpamplona.djot/Footnote> // com.vitorpamplona.djot/Doc.footnotes.<get-footnotes>|<get-footnotes>(){}[0]
+
+        // Targets: [js]
+        final fun <get-footnotes>(): kotlin.collections/LinkedHashMap<kotlin/String, com.vitorpamplona.djot/Footnote> // com.vitorpamplona.djot/Doc.footnotes.<get-footnotes>|<get-footnotes>(){}[0]
+    final val references // com.vitorpamplona.djot/Doc.references|{}references[0]
+        // Targets: [native, wasmJs]
+        final fun <get-references>(): kotlin.collections/HashMap<kotlin/String, com.vitorpamplona.djot/Reference> // com.vitorpamplona.djot/Doc.references.<get-references>|<get-references>(){}[0]
+
+        // Targets: [js]
+        final fun <get-references>(): kotlin.collections/LinkedHashMap<kotlin/String, com.vitorpamplona.djot/Reference> // com.vitorpamplona.djot/Doc.references.<get-references>|<get-references>(){}[0]
+
+    // Targets: [native, wasmJs]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ..., kotlin.collections/HashMap<kotlin/String, com.vitorpamplona.djot/Reference> = ..., kotlin.collections/HashMap<kotlin/String, com.vitorpamplona.djot/Reference> = ..., kotlin.collections/HashMap<kotlin/String, com.vitorpamplona.djot/Footnote> = ...) // com.vitorpamplona.djot/Doc.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>;kotlin.collections.HashMap<kotlin.String,com.vitorpamplona.djot.Reference>;kotlin.collections.HashMap<kotlin.String,com.vitorpamplona.djot.Reference>;kotlin.collections.HashMap<kotlin.String,com.vitorpamplona.djot.Footnote>){}[0]
+
+    // Targets: [js]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ..., kotlin.collections/LinkedHashMap<kotlin/String, com.vitorpamplona.djot/Reference> = ..., kotlin.collections/LinkedHashMap<kotlin/String, com.vitorpamplona.djot/Reference> = ..., kotlin.collections/LinkedHashMap<kotlin/String, com.vitorpamplona.djot/Footnote> = ...) // com.vitorpamplona.djot/Doc.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>;kotlin.collections.LinkedHashMap<kotlin.String,com.vitorpamplona.djot.Reference>;kotlin.collections.LinkedHashMap<kotlin.String,com.vitorpamplona.djot.Reference>;kotlin.collections.LinkedHashMap<kotlin.String,com.vitorpamplona.djot.Footnote>){}[0]
+}
+
+final class com.vitorpamplona.djot/DoubleQuoted : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/DoubleQuoted|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/DoubleQuoted.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/DoubleQuoted.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/DoubleQuoted.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Email : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Email|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/Email.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/Email.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/Email.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/Email.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Emph : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Emph|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Emph.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Emph.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Emph.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Event { // com.vitorpamplona.djot/Event|null[0]
+    constructor <init>(kotlin/Int, kotlin/Int, kotlin/String) // com.vitorpamplona.djot/Event.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.String){}[0]
+
+    final val annot // com.vitorpamplona.djot/Event.annot|{}annot[0]
+        final fun <get-annot>(): kotlin/String // com.vitorpamplona.djot/Event.annot.<get-annot>|<get-annot>(){}[0]
+    final val endpos // com.vitorpamplona.djot/Event.endpos|{}endpos[0]
+        final fun <get-endpos>(): kotlin/Int // com.vitorpamplona.djot/Event.endpos.<get-endpos>|<get-endpos>(){}[0]
+    final val startpos // com.vitorpamplona.djot/Event.startpos|{}startpos[0]
+        final fun <get-startpos>(): kotlin/Int // com.vitorpamplona.djot/Event.startpos.<get-startpos>|<get-startpos>(){}[0]
+
+    final fun component1(): kotlin/Int // com.vitorpamplona.djot/Event.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.vitorpamplona.djot/Event.component2|component2(){}[0]
+    final fun component3(): kotlin/String // com.vitorpamplona.djot/Event.component3|component3(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/String = ...): com.vitorpamplona.djot/Event // com.vitorpamplona.djot/Event.copy|copy(kotlin.Int;kotlin.Int;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.vitorpamplona.djot/Event.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.vitorpamplona.djot/Event.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.vitorpamplona.djot/Event.toString|toString(){}[0]
+}
+
+final class com.vitorpamplona.djot/Footnote : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/Footnote|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/Footnote.<init>|<init>(kotlin.String;kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/Footnote.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/Footnote.children.<get-children>|<get-children>(){}[0]
+
+    final var label // com.vitorpamplona.djot/Footnote.label|{}label[0]
+        final fun <get-label>(): kotlin/String // com.vitorpamplona.djot/Footnote.label.<get-label>|<get-label>(){}[0]
+        final fun <set-label>(kotlin/String) // com.vitorpamplona.djot/Footnote.label.<set-label>|<set-label>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/FootnoteReference : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/FootnoteReference|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/FootnoteReference.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/FootnoteReference.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/FootnoteReference.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/FootnoteReference.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/HardBreak : com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/HardBreak|null[0]
+    constructor <init>() // com.vitorpamplona.djot/HardBreak.<init>|<init>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Heading : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline> { // com.vitorpamplona.djot/Heading|null[0]
+    constructor <init>(kotlin/Int, kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Heading.<init>|<init>(kotlin.Int;kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Heading.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Heading.children.<get-children>|<get-children>(){}[0]
+
+    final var level // com.vitorpamplona.djot/Heading.level|{}level[0]
+        final fun <get-level>(): kotlin/Int // com.vitorpamplona.djot/Heading.level.<get-level>|<get-level>(){}[0]
+        final fun <set-level>(kotlin/Int) // com.vitorpamplona.djot/Heading.level.<set-level>|<set-level>(kotlin.Int){}[0]
+}
+
+final class com.vitorpamplona.djot/Image : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Image|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String? = ..., kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Image.<init>|<init>(kotlin.String?;kotlin.String?;kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Image.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Image.children.<get-children>|<get-children>(){}[0]
+
+    final var destination // com.vitorpamplona.djot/Image.destination|{}destination[0]
+        final fun <get-destination>(): kotlin/String? // com.vitorpamplona.djot/Image.destination.<get-destination>|<get-destination>(){}[0]
+        final fun <set-destination>(kotlin/String?) // com.vitorpamplona.djot/Image.destination.<set-destination>|<set-destination>(kotlin.String?){}[0]
+    final var reference // com.vitorpamplona.djot/Image.reference|{}reference[0]
+        final fun <get-reference>(): kotlin/String? // com.vitorpamplona.djot/Image.reference.<get-reference>|<get-reference>(){}[0]
+        final fun <set-reference>(kotlin/String?) // com.vitorpamplona.djot/Image.reference.<set-reference>|<set-reference>(kotlin.String?){}[0]
+}
+
+final class com.vitorpamplona.djot/InlineMath : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/InlineMath|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/InlineMath.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/InlineMath.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/InlineMath.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/InlineMath.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Insert : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Insert|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Insert.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Insert.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Insert.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Link : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Link|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String? = ..., kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Link.<init>|<init>(kotlin.String?;kotlin.String?;kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Link.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Link.children.<get-children>|<get-children>(){}[0]
+
+    final var destination // com.vitorpamplona.djot/Link.destination|{}destination[0]
+        final fun <get-destination>(): kotlin/String? // com.vitorpamplona.djot/Link.destination.<get-destination>|<get-destination>(){}[0]
+        final fun <set-destination>(kotlin/String?) // com.vitorpamplona.djot/Link.destination.<set-destination>|<set-destination>(kotlin.String?){}[0]
+    final var reference // com.vitorpamplona.djot/Link.reference|{}reference[0]
+        final fun <get-reference>(): kotlin/String? // com.vitorpamplona.djot/Link.reference.<get-reference>|<get-reference>(){}[0]
+        final fun <set-reference>(kotlin/String?) // com.vitorpamplona.djot/Link.reference.<set-reference>|<set-reference>(kotlin.String?){}[0]
+}
+
+final class com.vitorpamplona.djot/ListItem : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/ListItem|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/ListItem.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/ListItem.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/ListItem.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Mark : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Mark|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Mark.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Mark.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Mark.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/NonBreakingSpace : com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/NonBreakingSpace|null[0]
+    constructor <init>() // com.vitorpamplona.djot/NonBreakingSpace.<init>|<init>(){}[0]
+}
+
+final class com.vitorpamplona.djot/OrderedList : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/ListItem> { // com.vitorpamplona.djot/OrderedList|null[0]
+    constructor <init>(kotlin/String, kotlin/Boolean, kotlin/Long? = ..., kotlin.collections/MutableList<com.vitorpamplona.djot/ListItem> = ...) // com.vitorpamplona.djot/OrderedList.<init>|<init>(kotlin.String;kotlin.Boolean;kotlin.Long?;kotlin.collections.MutableList<com.vitorpamplona.djot.ListItem>){}[0]
+
+    final val children // com.vitorpamplona.djot/OrderedList.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/ListItem> // com.vitorpamplona.djot/OrderedList.children.<get-children>|<get-children>(){}[0]
+
+    final var start // com.vitorpamplona.djot/OrderedList.start|{}start[0]
+        final fun <get-start>(): kotlin/Long? // com.vitorpamplona.djot/OrderedList.start.<get-start>|<get-start>(){}[0]
+        final fun <set-start>(kotlin/Long?) // com.vitorpamplona.djot/OrderedList.start.<set-start>|<set-start>(kotlin.Long?){}[0]
+    final var style // com.vitorpamplona.djot/OrderedList.style|{}style[0]
+        final fun <get-style>(): kotlin/String // com.vitorpamplona.djot/OrderedList.style.<get-style>|<get-style>(){}[0]
+        final fun <set-style>(kotlin/String) // com.vitorpamplona.djot/OrderedList.style.<set-style>|<set-style>(kotlin.String){}[0]
+    final var tight // com.vitorpamplona.djot/OrderedList.tight|{}tight[0]
+        final fun <get-tight>(): kotlin/Boolean // com.vitorpamplona.djot/OrderedList.tight.<get-tight>|<get-tight>(){}[0]
+        final fun <set-tight>(kotlin/Boolean) // com.vitorpamplona.djot/OrderedList.tight.<set-tight>|<set-tight>(kotlin.Boolean){}[0]
+}
+
+final class com.vitorpamplona.djot/Para : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline> { // com.vitorpamplona.djot/Para|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Para.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Para.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Para.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/ParseOptions { // com.vitorpamplona.djot/ParseOptions|null[0]
+    constructor <init>(kotlin/Boolean = ..., com.vitorpamplona.djot/WarningHandler? = ...) // com.vitorpamplona.djot/ParseOptions.<init>|<init>(kotlin.Boolean;com.vitorpamplona.djot.WarningHandler?){}[0]
+
+    final val sourcePositions // com.vitorpamplona.djot/ParseOptions.sourcePositions|{}sourcePositions[0]
+        final fun <get-sourcePositions>(): kotlin/Boolean // com.vitorpamplona.djot/ParseOptions.sourcePositions.<get-sourcePositions>|<get-sourcePositions>(){}[0]
+    final val warn // com.vitorpamplona.djot/ParseOptions.warn|{}warn[0]
+        final fun <get-warn>(): com.vitorpamplona.djot/WarningHandler? // com.vitorpamplona.djot/ParseOptions.warn.<get-warn>|<get-warn>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Pos { // com.vitorpamplona.djot/Pos|null[0]
+    constructor <init>(com.vitorpamplona.djot/SourceLoc, com.vitorpamplona.djot/SourceLoc) // com.vitorpamplona.djot/Pos.<init>|<init>(com.vitorpamplona.djot.SourceLoc;com.vitorpamplona.djot.SourceLoc){}[0]
+
+    final val end // com.vitorpamplona.djot/Pos.end|{}end[0]
+        final fun <get-end>(): com.vitorpamplona.djot/SourceLoc // com.vitorpamplona.djot/Pos.end.<get-end>|<get-end>(){}[0]
+    final val start // com.vitorpamplona.djot/Pos.start|{}start[0]
+        final fun <get-start>(): com.vitorpamplona.djot/SourceLoc // com.vitorpamplona.djot/Pos.start.<get-start>|<get-start>(){}[0]
+
+    final fun component1(): com.vitorpamplona.djot/SourceLoc // com.vitorpamplona.djot/Pos.component1|component1(){}[0]
+    final fun component2(): com.vitorpamplona.djot/SourceLoc // com.vitorpamplona.djot/Pos.component2|component2(){}[0]
+    final fun copy(com.vitorpamplona.djot/SourceLoc = ..., com.vitorpamplona.djot/SourceLoc = ...): com.vitorpamplona.djot/Pos // com.vitorpamplona.djot/Pos.copy|copy(com.vitorpamplona.djot.SourceLoc;com.vitorpamplona.djot.SourceLoc){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.vitorpamplona.djot/Pos.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.vitorpamplona.djot/Pos.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.vitorpamplona.djot/Pos.toString|toString(){}[0]
+}
+
+final class com.vitorpamplona.djot/RawBlock : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasText { // com.vitorpamplona.djot/RawBlock|null[0]
+    constructor <init>(kotlin/String, kotlin/String = ...) // com.vitorpamplona.djot/RawBlock.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+    final var format // com.vitorpamplona.djot/RawBlock.format|{}format[0]
+        final fun <get-format>(): kotlin/String // com.vitorpamplona.djot/RawBlock.format.<get-format>|<get-format>(){}[0]
+        final fun <set-format>(kotlin/String) // com.vitorpamplona.djot/RawBlock.format.<set-format>|<set-format>(kotlin.String){}[0]
+    final var text // com.vitorpamplona.djot/RawBlock.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/RawBlock.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/RawBlock.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/RawInline : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/RawInline|null[0]
+    constructor <init>(kotlin/String, kotlin/String) // com.vitorpamplona.djot/RawInline.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+    final var format // com.vitorpamplona.djot/RawInline.format|{}format[0]
+        final fun <get-format>(): kotlin/String // com.vitorpamplona.djot/RawInline.format.<get-format>|<get-format>(){}[0]
+        final fun <set-format>(kotlin/String) // com.vitorpamplona.djot/RawInline.format.<set-format>|<set-format>(kotlin.String){}[0]
+    final var text // com.vitorpamplona.djot/RawInline.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/RawInline.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/RawInline.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Reference : com.vitorpamplona.djot/AstNode { // com.vitorpamplona.djot/Reference|null[0]
+    constructor <init>(kotlin/String, kotlin/String) // com.vitorpamplona.djot/Reference.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+    final var destination // com.vitorpamplona.djot/Reference.destination|{}destination[0]
+        final fun <get-destination>(): kotlin/String // com.vitorpamplona.djot/Reference.destination.<get-destination>|<get-destination>(){}[0]
+        final fun <set-destination>(kotlin/String) // com.vitorpamplona.djot/Reference.destination.<set-destination>|<set-destination>(kotlin.String){}[0]
+    final var label // com.vitorpamplona.djot/Reference.label|{}label[0]
+        final fun <get-label>(): kotlin/String // com.vitorpamplona.djot/Reference.label.<get-label>|<get-label>(){}[0]
+        final fun <set-label>(kotlin/String) // com.vitorpamplona.djot/Reference.label.<set-label>|<set-label>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Row : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Cell>, com.vitorpamplona.djot/TableChild { // com.vitorpamplona.djot/Row|null[0]
+    constructor <init>(kotlin/Boolean, kotlin.collections/MutableList<com.vitorpamplona.djot/Cell> = ...) // com.vitorpamplona.djot/Row.<init>|<init>(kotlin.Boolean;kotlin.collections.MutableList<com.vitorpamplona.djot.Cell>){}[0]
+
+    final val children // com.vitorpamplona.djot/Row.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Cell> // com.vitorpamplona.djot/Row.children.<get-children>|<get-children>(){}[0]
+
+    final var head // com.vitorpamplona.djot/Row.head|{}head[0]
+        final fun <get-head>(): kotlin/Boolean // com.vitorpamplona.djot/Row.head.<get-head>|<get-head>(){}[0]
+        final fun <set-head>(kotlin/Boolean) // com.vitorpamplona.djot/Row.head.<set-head>|<set-head>(kotlin.Boolean){}[0]
+}
+
+final class com.vitorpamplona.djot/Section : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/Section|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/Section.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/Section.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/Section.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/SingleQuoted : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/SingleQuoted|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/SingleQuoted.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/SingleQuoted.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/SingleQuoted.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/SmartPunctuation : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/SmartPunctuation|null[0]
+    constructor <init>(kotlin/String, kotlin/String) // com.vitorpamplona.djot/SmartPunctuation.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/SmartPunctuation.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/SmartPunctuation.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/SmartPunctuation.text.<set-text>|<set-text>(kotlin.String){}[0]
+    final var type // com.vitorpamplona.djot/SmartPunctuation.type|{}type[0]
+        final fun <get-type>(): kotlin/String // com.vitorpamplona.djot/SmartPunctuation.type.<get-type>|<get-type>(){}[0]
+        final fun <set-type>(kotlin/String) // com.vitorpamplona.djot/SmartPunctuation.type.<set-type>|<set-type>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/SoftBreak : com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/SoftBreak|null[0]
+    constructor <init>() // com.vitorpamplona.djot/SoftBreak.<init>|<init>(){}[0]
+}
+
+final class com.vitorpamplona.djot/SourceLoc { // com.vitorpamplona.djot/SourceLoc|null[0]
+    constructor <init>(kotlin/Int, kotlin/Int, kotlin/Int) // com.vitorpamplona.djot/SourceLoc.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+
+    final val col // com.vitorpamplona.djot/SourceLoc.col|{}col[0]
+        final fun <get-col>(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.col.<get-col>|<get-col>(){}[0]
+    final val line // com.vitorpamplona.djot/SourceLoc.line|{}line[0]
+        final fun <get-line>(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.line.<get-line>|<get-line>(){}[0]
+    final val offset // com.vitorpamplona.djot/SourceLoc.offset|{}offset[0]
+        final fun <get-offset>(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.offset.<get-offset>|<get-offset>(){}[0]
+
+    final fun component1(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.component3|component3(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ...): com.vitorpamplona.djot/SourceLoc // com.vitorpamplona.djot/SourceLoc.copy|copy(kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.vitorpamplona.djot/SourceLoc.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.vitorpamplona.djot/SourceLoc.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.vitorpamplona.djot/SourceLoc.toString|toString(){}[0]
+}
+
+final class com.vitorpamplona.djot/Span : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Span|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Span.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Span.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Span.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Str : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Str|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/Str.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/Str.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/Str.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/Str.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Strong : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Strong|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Strong.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Strong.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Strong.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Subscript : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Subscript|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Subscript.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Subscript.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Subscript.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Superscript : com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline>, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Superscript|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Superscript.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Superscript.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Superscript.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Symb : com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Symb|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/Symb.<init>|<init>(kotlin.String){}[0]
+
+    final var alias // com.vitorpamplona.djot/Symb.alias|{}alias[0]
+        final fun <get-alias>(): kotlin/String // com.vitorpamplona.djot/Symb.alias.<get-alias>|<get-alias>(){}[0]
+        final fun <set-alias>(kotlin/String) // com.vitorpamplona.djot/Symb.alias.<set-alias>|<set-alias>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Table : com.vitorpamplona.djot/Block { // com.vitorpamplona.djot/Table|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/TableChild> = ...) // com.vitorpamplona.djot/Table.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.TableChild>){}[0]
+
+    final val children // com.vitorpamplona.djot/Table.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/TableChild> // com.vitorpamplona.djot/Table.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/TaskList : com.vitorpamplona.djot/Block, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/TaskListItem> { // com.vitorpamplona.djot/TaskList|null[0]
+    constructor <init>(kotlin/Boolean, kotlin.collections/MutableList<com.vitorpamplona.djot/TaskListItem> = ...) // com.vitorpamplona.djot/TaskList.<init>|<init>(kotlin.Boolean;kotlin.collections.MutableList<com.vitorpamplona.djot.TaskListItem>){}[0]
+
+    final val children // com.vitorpamplona.djot/TaskList.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/TaskListItem> // com.vitorpamplona.djot/TaskList.children.<get-children>|<get-children>(){}[0]
+
+    final var tight // com.vitorpamplona.djot/TaskList.tight|{}tight[0]
+        final fun <get-tight>(): kotlin/Boolean // com.vitorpamplona.djot/TaskList.tight.<get-tight>|<get-tight>(){}[0]
+        final fun <set-tight>(kotlin/Boolean) // com.vitorpamplona.djot/TaskList.tight.<set-tight>|<set-tight>(kotlin.Boolean){}[0]
+}
+
+final class com.vitorpamplona.djot/TaskListItem : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Block> { // com.vitorpamplona.djot/TaskListItem|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/MutableList<com.vitorpamplona.djot/Block> = ...) // com.vitorpamplona.djot/TaskListItem.<init>|<init>(kotlin.String;kotlin.collections.MutableList<com.vitorpamplona.djot.Block>){}[0]
+
+    final val children // com.vitorpamplona.djot/TaskListItem.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Block> // com.vitorpamplona.djot/TaskListItem.children.<get-children>|<get-children>(){}[0]
+
+    final var checkbox // com.vitorpamplona.djot/TaskListItem.checkbox|{}checkbox[0]
+        final fun <get-checkbox>(): kotlin/String // com.vitorpamplona.djot/TaskListItem.checkbox.<get-checkbox>|<get-checkbox>(){}[0]
+        final fun <set-checkbox>(kotlin/String) // com.vitorpamplona.djot/TaskListItem.checkbox.<set-checkbox>|<set-checkbox>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Term : com.vitorpamplona.djot/AstNode, com.vitorpamplona.djot/DefinitionListItemChild, com.vitorpamplona.djot/HasChildren<com.vitorpamplona.djot/Inline> { // com.vitorpamplona.djot/Term|null[0]
+    constructor <init>(kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> = ...) // com.vitorpamplona.djot/Term.<init>|<init>(kotlin.collections.MutableList<com.vitorpamplona.djot.Inline>){}[0]
+
+    final val children // com.vitorpamplona.djot/Term.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/MutableList<com.vitorpamplona.djot/Inline> // com.vitorpamplona.djot/Term.children.<get-children>|<get-children>(){}[0]
+}
+
+final class com.vitorpamplona.djot/ThematicBreak : com.vitorpamplona.djot/Block { // com.vitorpamplona.djot/ThematicBreak|null[0]
+    constructor <init>() // com.vitorpamplona.djot/ThematicBreak.<init>|<init>(){}[0]
+}
+
+final class com.vitorpamplona.djot/Url : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Url|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/Url.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/Url.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/Url.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/Url.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Verbatim : com.vitorpamplona.djot/HasText, com.vitorpamplona.djot/Inline { // com.vitorpamplona.djot/Verbatim|null[0]
+    constructor <init>(kotlin/String) // com.vitorpamplona.djot/Verbatim.<init>|<init>(kotlin.String){}[0]
+
+    final var text // com.vitorpamplona.djot/Verbatim.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.vitorpamplona.djot/Verbatim.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.vitorpamplona.djot/Verbatim.text.<set-text>|<set-text>(kotlin.String){}[0]
+}
+
+final class com.vitorpamplona.djot/Warning { // com.vitorpamplona.djot/Warning|null[0]
+    constructor <init>(kotlin/String, com.vitorpamplona.djot/SourceLoc) // com.vitorpamplona.djot/Warning.<init>|<init>(kotlin.String;com.vitorpamplona.djot.SourceLoc){}[0]
+    constructor <init>(kotlin/String, kotlin/Int? = ..., com.vitorpamplona.djot/SourceLoc? = ...) // com.vitorpamplona.djot/Warning.<init>|<init>(kotlin.String;kotlin.Int?;com.vitorpamplona.djot.SourceLoc?){}[0]
+
+    final val message // com.vitorpamplona.djot/Warning.message|{}message[0]
+        final fun <get-message>(): kotlin/String // com.vitorpamplona.djot/Warning.message.<get-message>|<get-message>(){}[0]
+    final val offset // com.vitorpamplona.djot/Warning.offset|{}offset[0]
+        final fun <get-offset>(): kotlin/Int? // com.vitorpamplona.djot/Warning.offset.<get-offset>|<get-offset>(){}[0]
+    final val sourceLoc // com.vitorpamplona.djot/Warning.sourceLoc|{}sourceLoc[0]
+        final fun <get-sourceLoc>(): com.vitorpamplona.djot/SourceLoc? // com.vitorpamplona.djot/Warning.sourceLoc.<get-sourceLoc>|<get-sourceLoc>(){}[0]
+
+    final fun render(): kotlin/String // com.vitorpamplona.djot/Warning.render|render(){}[0]
+}
+
+sealed class com.vitorpamplona.djot/AstNode { // com.vitorpamplona.djot/AstNode|null[0]
+    final val tag // com.vitorpamplona.djot/AstNode.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.vitorpamplona.djot/AstNode.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var attributes // com.vitorpamplona.djot/AstNode.attributes|{}attributes[0]
+        // Targets: [native, wasmJs]
+        final fun <get-attributes>(): kotlin.collections/HashMap<kotlin/String, kotlin/String>? // com.vitorpamplona.djot/AstNode.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+        // Targets: [native, wasmJs]
+        final fun <set-attributes>(kotlin.collections/HashMap<kotlin/String, kotlin/String>?) // com.vitorpamplona.djot/AstNode.attributes.<set-attributes>|<set-attributes>(kotlin.collections.HashMap<kotlin.String,kotlin.String>?){}[0]
+
+        // Targets: [js]
+        final fun <get-attributes>(): kotlin.collections/LinkedHashMap<kotlin/String, kotlin/String>? // com.vitorpamplona.djot/AstNode.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+        // Targets: [js]
+        final fun <set-attributes>(kotlin.collections/LinkedHashMap<kotlin/String, kotlin/String>?) // com.vitorpamplona.djot/AstNode.attributes.<set-attributes>|<set-attributes>(kotlin.collections.LinkedHashMap<kotlin.String,kotlin.String>?){}[0]
+    final var autoAttributes // com.vitorpamplona.djot/AstNode.autoAttributes|{}autoAttributes[0]
+        // Targets: [native, wasmJs]
+        final fun <get-autoAttributes>(): kotlin.collections/HashMap<kotlin/String, kotlin/String>? // com.vitorpamplona.djot/AstNode.autoAttributes.<get-autoAttributes>|<get-autoAttributes>(){}[0]
+
+        // Targets: [native, wasmJs]
+        final fun <set-autoAttributes>(kotlin.collections/HashMap<kotlin/String, kotlin/String>?) // com.vitorpamplona.djot/AstNode.autoAttributes.<set-autoAttributes>|<set-autoAttributes>(kotlin.collections.HashMap<kotlin.String,kotlin.String>?){}[0]
+
+        // Targets: [js]
+        final fun <get-autoAttributes>(): kotlin.collections/LinkedHashMap<kotlin/String, kotlin/String>? // com.vitorpamplona.djot/AstNode.autoAttributes.<get-autoAttributes>|<get-autoAttributes>(){}[0]
+
+        // Targets: [js]
+        final fun <set-autoAttributes>(kotlin.collections/LinkedHashMap<kotlin/String, kotlin/String>?) // com.vitorpamplona.djot/AstNode.autoAttributes.<set-autoAttributes>|<set-autoAttributes>(kotlin.collections.LinkedHashMap<kotlin.String,kotlin.String>?){}[0]
+    final var pos // com.vitorpamplona.djot/AstNode.pos|{}pos[0]
+        final fun <get-pos>(): com.vitorpamplona.djot/Pos? // com.vitorpamplona.djot/AstNode.pos.<get-pos>|<get-pos>(){}[0]
+        final fun <set-pos>(com.vitorpamplona.djot/Pos?) // com.vitorpamplona.djot/AstNode.pos.<set-pos>|<set-pos>(com.vitorpamplona.djot.Pos?){}[0]
+}
+
+sealed class com.vitorpamplona.djot/Block : com.vitorpamplona.djot/AstNode // com.vitorpamplona.djot/Block|null[0]
+
+sealed class com.vitorpamplona.djot/Inline : com.vitorpamplona.djot/AstNode // com.vitorpamplona.djot/Inline|null[0]
+
+final val com.vitorpamplona.djot/childNodes // com.vitorpamplona.djot/childNodes|@com.vitorpamplona.djot.AstNode{}childNodes[0]
+    final fun (com.vitorpamplona.djot/AstNode).<get-childNodes>(): kotlin.collections/List<com.vitorpamplona.djot/AstNode> // com.vitorpamplona.djot/childNodes.<get-childNodes>|<get-childNodes>@com.vitorpamplona.djot.AstNode(){}[0]
+
+final fun com.vitorpamplona.djot/getStringContent(com.vitorpamplona.djot/AstNode): kotlin/String // com.vitorpamplona.djot/getStringContent|getStringContent(com.vitorpamplona.djot.AstNode){}[0]
+final fun com.vitorpamplona.djot/parse(kotlin/String, com.vitorpamplona.djot/ParseOptions = ...): com.vitorpamplona.djot/Doc // com.vitorpamplona.djot/parse|parse(kotlin.String;com.vitorpamplona.djot.ParseOptions){}[0]
+final fun com.vitorpamplona.djot/parseEvents(kotlin/String, com.vitorpamplona.djot/ParseOptions = ...): kotlin.collections/Iterable<com.vitorpamplona.djot/Event> // com.vitorpamplona.djot/parseEvents|parseEvents(kotlin.String;com.vitorpamplona.djot.ParseOptions){}[0]
+final fun com.vitorpamplona.djot/parseFromEvents(kotlin.collections/Iterable<com.vitorpamplona.djot/Event>, kotlin/String, com.vitorpamplona.djot/ParseOptions = ...): com.vitorpamplona.djot/Doc // com.vitorpamplona.djot/parseFromEvents|parseFromEvents(kotlin.collections.Iterable<com.vitorpamplona.djot.Event>;kotlin.String;com.vitorpamplona.djot.ParseOptions){}[0]
+final fun com.vitorpamplona.djot/renderAST(com.vitorpamplona.djot/Doc): kotlin/String // com.vitorpamplona.djot/renderAST|renderAST(com.vitorpamplona.djot.Doc){}[0]
