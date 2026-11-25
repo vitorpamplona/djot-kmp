@@ -10,11 +10,18 @@ in CI, and gives djot.js's output on randomly generated documents (`tools/differ
 
 Targets: JVM, Android, iOS, macOS, Linux, JavaScript and Wasm.
 
+Two artifacts:
+
+- `com.vitorpamplona.djot:djot`: the parser and the AST. Depend on this alone to draw the AST
+  your own way.
+- `com.vitorpamplona.djot:djot-html`: renders the AST to HTML, exactly as djot.js does. Brings
+  `djot` with it.
+
 ## Use
 
 ```kotlin
+import com.vitorpamplona.djot.html.renderHTML
 import com.vitorpamplona.djot.parse
-import com.vitorpamplona.djot.renderHTML
 
 val doc = parse("Hello _djot_ {.greeting}")
 val html = renderHTML(doc)
@@ -23,7 +30,7 @@ val html = renderHTML(doc)
 `parse` returns a `Doc`: a typed tree with one class per node (`Para`, `Heading`, `Str`, `Link`,
 `Table`, `Footnote`, ...), each with its `attributes` and, when parsed with
 `ParseOptions(sourcePositions = true)`, its source `pos`. Walk it to render your own way;
-`renderHTML` and `renderAST` (a readable dump) are the two renderers included. `parseEvents` gives
+`renderAST` (a readable dump, in `djot`) and `renderHTML` (in `djot-html`) are the renderers included. `parseEvents` gives
 the lower-level event stream.
 
 ## Status

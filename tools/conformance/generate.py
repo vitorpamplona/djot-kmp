@@ -2,7 +2,7 @@
 """Generates the Kotlin conformance tests from djot.js's test files (see conformance/README.md).
 
 Parses each file exactly as djot.js's src/functional.spec.ts does, and writes one test class per
-file with one @Test per case into djot/src/commonTest/.../conformance/.
+file with one @Test per case into djot-html/src/commonTest/.../html/conformance/.
 """
 import os
 import re
@@ -10,7 +10,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC = os.path.join(ROOT, "conformance", "djot.js")
-OUT = os.path.join(ROOT, "djot", "src", "commonTest", "kotlin", "com", "vitorpamplona", "djot", "conformance")
+OUT = os.path.join(ROOT, "djot-html", "src", "commonTest", "kotlin", "com", "vitorpamplona", "djot", "html", "conformance")
 HEADER = os.path.join(ROOT, "spotless", "copyright.kt")
 
 # The list and order of djot.js's functional.spec.ts. filters.test is not in it.
@@ -129,7 +129,7 @@ def main():
         name = class_name(file)
         body = [
             header,
-            "package com.vitorpamplona.djot.conformance\n",
+            "package com.vitorpamplona.djot.html.conformance\n",
             "\n",
             "import kotlin.test.Test\n",
             "\n",

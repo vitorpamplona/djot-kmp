@@ -3,43 +3,45 @@
 A Kotlin Multiplatform parser for [Djot](https://djot.net/), the light markup language by John
 MacFarlane: Djot text to an AST, and the AST to HTML. A port of
 [djot.js](https://github.com/jgm/djot.js), the reference implementation, on the Kotlin stdlib
-alone. Published as `com.vitorpamplona.djot:djot`. It started for
+alone. Published as `com.vitorpamplona.djot:djot` (the parser and AST) and
+`com.vitorpamplona.djot:djot-html` (the HTML renderer). It started for
 [Amethyst](https://github.com/vitorpamplona/amethyst), which renders NIP-54 wiki pages (Djot)
 with it, but it knows nothing about Nostr.
 
 ## Layout
 
-- `djot/` — the library, in `com.vitorpamplona.djot`. One Kotlin file per djot.js source file,
-  with the same names inside:
+- `djot/` — the parser and AST, in `com.vitorpamplona.djot`. One Kotlin file per djot.js source
+  file, with the same names inside:
   - `Ast.kt` (`ast.ts`): the public tree, one class per node tag (`Para`, `Heading`, `Str`,
     `Link`, `Doc`, ...), mutable, with `attributes`, `autoAttributes` and `pos` on `AstNode`.
   - `Event.kt` (`event.ts`, `options.ts`): `Event`, `ParseOptions`, `Warning`, `WarningHandler`.
   - `AttributeParser.kt` (`attributes.ts`), `InlineParser.kt` (`inline.ts`), `BlockParser.kt`
     (`block.ts`, with the public `parseEvents`): the parser, as a stream of events.
   - `Parse.kt` (`parse.ts`): `parse`, `renderAST`, `getStringContent`: events to the tree.
-  - `Html.kt` (`html.ts`): `renderHTML`, `HTMLRenderer`.
-- `djot/api/` — the public ABI dump (`checkKotlinAbi`).
+  - `PathologicalTest` (`commonTest`): djot.js's adversarial inputs (deep nesting, long delimiter
+    runs), each parsed under a time limit on every target.
+- `djot-html/` — the HTML renderer, in `com.vitorpamplona.djot.html`, on `djot` (`api`):
+  - `Html.kt` (`html.ts`): `renderHTML`, `HTMLRenderer`, `HtmlOptions`.
+  - The conformance suite (`commonTest/.../html/conformance/`), as its cases are written in HTML;
+    `HtmlPathologicalTest`, the same adversarial inputs rendered; `DifferentialTest` (`jvmTest`).
+- `djot/api/`, `djot-html/api/` — the public ABI dumps (`checkKotlinAbi`).
 - `conformance/djot.js/` — djot.js's test files, unchanged, with its license.
-  `tools/conformance/generate.py` turns them into `djot/src/commonTest/.../conformance/`, one
-  test per case, so the suite runs on every target (see `conformance/README.md`).
-- `tools/differential/generate.mjs` and `DifferentialTest` (`jvmTest`) — random documents, plus
+  `tools/conformance/generate.py` turns them into `djot-html/src/commonTest/.../html/conformance/`,
+  one test per case, so the suite runs on every target (see `conformance/README.md`).
+- `tools/differential/generate.mjs` and `DifferentialTest` (djot-html's `jvmTest`) — random documents, plus
   mutations of the conformance inputs, rendered by djot.js and compared with this port (HTML, AST
   dump, AST dump with positions). Opt-in, see "Build and test".
-- `PathologicalTest` (`commonTest`) — djot.js's adversarial inputs (deep nesting, long delimiter
-  runs), each parsed and rendered under a time limit on every target.
-- `build-logic/` — `djot.library`: the targets, JVM 17, the Android SDK, the explicit API and its
+- `build-logic/` — `djot.library`, applied by both modules: the targets, JVM 17, the Android SDK, the explicit API and its
   check, publishing. The module's own build file holds only what is its own.
 - `tools/agent-hooks/` — the checks Claude Code and Codex run before a push.
 
-**One module, on purpose (decided 2026-11-25).** The parser and the HTML renderer ship together
-in `djot`, as djot.js ships them. Splitting would buy nothing today: both need only the stdlib, so
-no consumer's classpath gets lighter; R8, the Kotlin/Native linker and the JS and Wasm compilers
-drop `renderHTML` from an app that never calls it; and the conformance suite is written in HTML,
-so the parser's tests need the renderer anyway. It would cost a second artifact, ABI dump and
-release flow. Split when a renderer brings a dependency (a `djot-compose` goes in its own module on
-top of `djot`, which stays stdlib-only), or when more of djot.js's renderers are ported (its Djot
-writer, its Pandoc conversion): then `djot` keeps the parser and the tree, and each renderer,
-`djot-html` included, becomes its own artifact.
+**Two modules (decided 2026-11-25): the parser apart from its renderers.** `djot` is what every
+consumer needs; a renderer is a choice, and an app that draws the AST itself (Amethyst, in
+Compose) depends on `djot` alone. Each renderer is its own artifact on top of `djot`: `djot-html`
+now, and the same for any later one (djot.js's Djot writer or Pandoc conversion, or a
+`djot-compose` that brings Compose). `djot` itself never depends on anything but the stdlib.
+`renderAST` stays in `djot`: djot.js defines it in `parse.ts`, and it is a debugging dump, not a
+renderer an app picks.
 
 ## Rules
 
@@ -61,9 +63,10 @@ writer, its Pandoc conversion): then `djot` keeps the parser and the tree, and e
 - `commonMain` and `commonTest` stay free of JVM-only APIs: Linux, Apple and the web compile them.
   For `@Volatile` import `kotlin.concurrent.Volatile`; in tests use `assertTrue`, not `assert`.
 - **Explicit API mode** is on: every public declaration says `public`, and `djot/api/` records the
-  public ABI. Public is what djot.js exports from `index.ts` that is ported: the AST, `parse`,
-  `parseEvents`, `renderAST`, `getStringContent`, `renderHTML`, `HTMLRenderer` and their options.
-  Everything else is `internal`. A deliberate API change runs `./gradlew updateKotlinAbi` and
+  public ABIs. Public is what djot.js exports from `index.ts` that is ported: in `djot` the AST,
+  `parse`, `parseEvents`, `renderAST`, `getStringContent` and their options; in `djot-html`
+  `renderHTML`, `HTMLRenderer` and `HtmlOptions`. Everything else is `internal`, so a renderer
+  module reaches `djot` only through its public API. A deliberate API change runs `./gradlew updateKotlinAbi` and
   commits the new dump.
 - **Credit djot.js.** Each ported file says so in a comment after its `package` line; `NOTICE`
   carries djot.js's license.
@@ -81,8 +84,8 @@ Djot input as a test, run it, and compare with djot.js's output (its playground 
 ```bash
 ./gradlew installGitHook                        # pre-commit (spotless) and pre-push (checks + tests)
 ./gradlew spotlessApply
-./gradlew :djot:jvmTest                         # also `./gradlew test`
-./gradlew :djot:jvmTest --tests "com.vitorpamplona.djot.conformance.EmphasisConformanceTest"
+./gradlew :djot:jvmTest :djot-html:jvmTest      # also `./gradlew test`
+./gradlew :djot-html:jvmTest --tests "com.vitorpamplona.djot.html.conformance.EmphasisConformanceTest"
 ./gradlew checkKotlinAbi                        # updateKotlinAbi after a deliberate change
 ./gradlew checkLinux checkWebNode               # everything the pre-push hook runs
 ./gradlew checkWeb                              # JS and Wasm in Node.js and headless Chrome
@@ -91,7 +94,7 @@ python3 tools/conformance/generate.py           # after copying new djot.js test
 # Differential run against djot.js: build a djot.js checkout (`npm ci --ignore-scripts && npx tsc`),
 # write cases from it, then compare (the report lists every mismatch):
 node tools/differential/generate.mjs <djot.js dir> /tmp/cases.tsv 50000 <seed>
-./gradlew :djot:jvmTest --tests '*DifferentialTest*' -Ddjot.diff=/tmp/cases.tsv -Ddjot.diff.out=/tmp/report.txt
+./gradlew :djot-html:jvmTest --tests '*DifferentialTest*' -Ddjot.diff=/tmp/cases.tsv -Ddjot.diff.out=/tmp/report.txt
 ```
 
 Run the differential test after any change to the parser or renderer, and after porting a djot.js
@@ -143,7 +146,7 @@ Both agents read the same rules and checks, laid out like Amethyst's, Quartz's a
 ## Versioning
 
 [Semantic versioning](https://semver.org/) over the public API: every `public` declaration in
-`djot/`, in source and binary form. Before 1.0.0 a minor version may break the API; from 1.0.0 on
+`djot/` and `djot-html/`, in source and binary form. Both artifacts share one version. Before 1.0.0 a minor version may break the API; from 1.0.0 on
 a breaking change needs a major version, and goes out first as a deprecation in a minor. Amethyst
 pins a version, so a breaking change needs a matching change there.
 
@@ -154,7 +157,7 @@ Open a PR only when the human you work for asks.
 
 ## Releasing
 
-Bump `VERSION_NAME` in `gradle.properties`, then push a `v<version>` tag. The `create-release.yml`
+Bump `VERSION_NAME` in `gradle.properties` (both artifacts share it), then push a `v<version>` tag. The `create-release.yml`
 workflow runs the Apple tests on macOS, then tests, publishes to Maven Central and opens the
 GitHub release. It needs `SONATYPE_USERNAME`, `SONATYPE_PASSWORD`, `SIGNING_PRIVATE_KEY` and
 `SIGNING_PASSWORD`, the same secrets as kiko-kmp, crypto-kmp and Quartz. Its `nostr` job publishes

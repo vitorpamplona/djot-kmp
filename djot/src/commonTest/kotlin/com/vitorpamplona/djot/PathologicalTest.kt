@@ -28,16 +28,15 @@ import kotlin.time.TimeSource
 
 // Ported from djot.js src/pathological.spec.ts (MIT, Copyright (C) 2022 John MacFarlane): inputs
 // built to trigger quadratic time or deep recursion, which must parse quickly and without a stack
-// overflow. Each also renders to HTML here, which djot.js's test leaves out. The limit is looser
-// than djot.js's 1 s so that the slower targets don't flake; a quadratic case on these sizes takes
-// far longer.
+// overflow. djot-html's HtmlPathologicalTest renders the same inputs. The limit is looser than
+// djot.js's 1 s so that the slower targets don't flake; a quadratic case on these sizes takes far
+// longer.
 class PathologicalTest {
     private val n = 500
 
     private fun assertFast(input: String) {
         val start = TimeSource.Monotonic.markNow()
-        val doc = parse(input)
-        renderHTML(doc)
+        parse(input)
         val elapsed = start.elapsedNow()
         assertTrue(elapsed < 5.seconds, "took $elapsed")
     }
@@ -82,45 +81,10 @@ class PathologicalTest {
 
     @Test fun footnoteReferenceStarts() = assertFast("[^".repeat(200 * n))
 
-    // Labels that collide with JavaScript's Object.prototype must behave like any other label.
-    private val badLabels = listOf("constructor", "toString", "hasOwnProperty", "__proto__")
-
-    private fun html(s: String) = renderHTML(parse(s))
-
-    @Test
-    fun undefinedFootnoteLabelsBehaveAlike() {
-        for (label in badLabels) assertEquals(html("hi[^zzz]\n"), html("hi[^$label]\n"), label)
-    }
-
-    @Test
-    fun undefinedReferenceLabelsBehaveAlike() {
-        for (label in badLabels) assertEquals(html("[x][zzz]\n"), html("[x][$label]\n"), label)
-    }
-
-    @Test
-    fun definedReferencesWithPrototypeLabelsResolve() {
-        for (label in badLabels) {
-            assertEquals("<p><a href=\"/url\">x</a></p>\n", html("[x][$label]\n\n[$label]: /url\n"), label)
-        }
-    }
-
-    @Test
-    fun definedFootnotesWithPrototypeLabelsResolve() {
-        for (label in badLabels) {
-            assertEquals(html("hi[^zzz]\n\n[^zzz]: note\n"), html("hi[^$label]\n\n[^$label]: note\n"), label)
-        }
-    }
-
-    @Test
-    fun prototypeHeadingIdsAreNotDuplicates() {
-        assertEquals("<section id=\"constructor\">\n<h1>constructor</h1>\n</section>\n", html("# constructor\n"))
-    }
-
     // djot.js keeps an ordered list's start as a JS number: a long one must not be cut to an Int.
     @Test
     fun longOrderedListStart() {
         val doc = parse("99999999999. a\n")
         assertEquals(99999999999L, (doc.children.single() as OrderedList).start)
-        assertEquals("<ol start=\"99999999999\">\n<li>\na\n</li>\n</ol>\n", renderHTML(doc))
     }
 }

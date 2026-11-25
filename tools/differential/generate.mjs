@@ -4,7 +4,7 @@
 //
 // Each output line is one case, five tab-separated base64 (UTF-8) fields: the input, djot.js's
 // HTML, its AST dump, its AST dump with source positions, and an error message if djot.js threw
-// ("" otherwise). DifferentialTest (jvmTest) reads the file when run with -Ddjot.diff=<out.tsv>.
+// ("" otherwise). DifferentialTest (djot-html's jvmTest) reads the file when run with -Ddjot.diff=<out.tsv>.
 import { createRequire } from "node:module";
 import fs from "node:fs";
 import path from "node:path";

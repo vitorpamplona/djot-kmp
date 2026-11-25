@@ -97,14 +97,14 @@ tasks.register<Copy>("installGitHook") {
 
 // The checks, listed once: the pre-push hook, CI (build.yml) and the release workflow
 // (create-release.yml) all run these tasks instead of keeping their own lists.
-val published = listOf(":djot")
+val published = listOf(":djot", ":djot-html")
 
 tasks.register("checkLinux") {
     group = "verification"
     description = "Formatting, the public API, and every test that runs on a Linux machine except the web's."
     dependsOn(allprojects.map { if (it == rootProject) ":spotlessCheck" else "${it.path}:spotlessCheck" })
     dependsOn(published.map { "$it:checkKotlinAbi" })
-    dependsOn(":djot:jvmTest", ":djot:testAndroidHostTest", ":djot:linuxX64Test")
+    dependsOn(published.flatMap { listOf("$it:jvmTest", "$it:testAndroidHostTest", "$it:linuxX64Test") })
     // Apple code compiles on Linux as metadata, so a mistake fails here in minutes instead of in
     // the macOS job.
     dependsOn(published.map { "$it:compileCommonMainKotlinMetadata" })
@@ -113,17 +113,17 @@ tasks.register("checkLinux") {
 tasks.register("checkWeb") {
     group = "verification"
     description = "The common tests on Kotlin/JS and Kotlin/Wasm, in Node.js and headless Chrome."
-    dependsOn(":djot:jsTest", ":djot:wasmJsTest")
+    dependsOn(published.flatMap { listOf("$it:jsTest", "$it:wasmJsTest") })
 }
 
 tasks.register("checkWebNode") {
     group = "verification"
     description = "The common tests on Kotlin/JS and Kotlin/Wasm, in Node.js only (no browser needed)."
-    dependsOn(":djot:jsNodeTest", ":djot:wasmJsNodeTest")
+    dependsOn(published.flatMap { listOf("$it:jsNodeTest", "$it:wasmJsNodeTest") })
 }
 
 tasks.register("checkApple") {
     group = "verification"
     description = "The iOS and macOS tests. macOS only."
-    dependsOn(":djot:iosSimulatorArm64Test", ":djot:macosArm64Test", ":djot:compileTestKotlinIosArm64")
+    dependsOn(published.flatMap { listOf("$it:iosSimulatorArm64Test", "$it:macosArm64Test", "$it:compileTestKotlinIosArm64") })
 }

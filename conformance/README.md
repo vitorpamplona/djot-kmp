@@ -9,8 +9,8 @@ line holding `.` (or `!` before a filter), the expected output, and the closing 
 compares the AST dump (`renderAST`) instead of the HTML; `p` parses with source positions.
 
 `tools/conformance/generate.py` turns them into Kotlin tests in
-`djot/src/commonTest/kotlin/com/vitorpamplona/djot/conformance/`, one `@Test` per case, so the
-suite runs on every target. Regenerate after updating the files:
+`djot-html/src/commonTest/kotlin/com/vitorpamplona/djot/html/conformance/`, one `@Test` per case, so the
+suite runs on every target. It lives in `djot-html` because its cases are written in HTML. Regenerate after updating the files:
 
 ```bash
 python3 tools/conformance/generate.py

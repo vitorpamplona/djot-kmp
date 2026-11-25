@@ -1,5 +1,5 @@
 pluginManagement {
-    // djot.library: what the published modules share.
+    // djot.library: what the published modules (djot, djot-html) share.
     includeBuild("build-logic")
     repositories {
         google()
@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "djot-kmp"
 include(":djot")
+include(":djot-html")
